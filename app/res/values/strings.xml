@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">YouTube VPN Gate</string>
+    <string name="service_label">YouTube VPN Gate</string>
+    <string name="service_description">Включает VPN в приложении Юбуст, когда открывается YouTube, и возвращает YouTube на экран после подключения.</string>
+    <string name="vpn_failed">Не удалось включить VPN. Откройте Юбуст и нажмите «Подключить».</string>
+
+    <string name="karaoke_label">Караоке!!!</string>
+    <string name="karaoke_title">КАРАОКЕ!!!</string>
+    <string name="karaoke_wait">Включаю VPN и открываю YouTube…</string>
+</resources>

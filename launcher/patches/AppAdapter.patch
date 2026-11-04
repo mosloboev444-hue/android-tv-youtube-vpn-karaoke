@@ -1,0 +1,74 @@
+--- a/launcher/app/src/main/java/com/gathin/tvhome/AppAdapter.java
++++ b/launcher/app/src/main/java/com/gathin/tvhome/AppAdapter.java
+@@ -14,6 +14,7 @@
+ import android.graphics.Outline;
+ import android.graphics.PixelFormat;
+ import android.graphics.Rect;
++import android.graphics.drawable.Animatable;
+ import android.graphics.drawable.Drawable;
+ import android.graphics.drawable.GradientDrawable;
+ import android.net.Uri;
+@@ -220,6 +221,8 @@
+     private final boolean uniformTiles;
+     /** Packages drawn from their icon and name even when they have a banner (config.xml icon_tiles). */
+     private final Set<String> iconTiles;
++    /** config.xml fire_app: that app's tile gets an animated fire banner (the karaoke button). */
++    private final String fireApp;
+     private final List<Entry> items = new ArrayList<>();
+ 
+     AppAdapter(Context ctx, TileListener listener, int dockSize, Config cfg) {
+@@ -244,6 +247,7 @@
+         this.cinematic = cfg.cinematicHome;
+         this.launchActions = cfg.launchActions;
+         this.iconTiles = new HashSet<>(Arrays.asList(ctx.getResources().getStringArray(R.array.icon_tiles)));
++        this.fireApp = ctx.getString(R.string.fire_app);
+         this.tileMenu = cfg.tileMenu;
+         this.appLabels = cfg.appLabels;
+         this.appBanners = cfg.appBanners;
+@@ -297,8 +301,11 @@
+                     appLabels.containsKey(pkg) ? appLabels.get(pkg) : String.valueOf(ri.loadLabel(pm)), pkg);
+             if (!seen.add(pkg + '\n' + label)) continue;
+             Drawable banner = null;
+-            // uniform_tiles draws the icon, so an app's banner is never loaded. A module card keeps its banner.
+-            if (!(uniformTiles && card == null)) {
++            // fire_app: the karaoke button burns instead of showing a static banner.
++            if (card == null && pkg.equals(fireApp)) {
++                banner = new FireBannerDrawable();
++            } else if (!(uniformTiles && card == null)) {
++                // uniform_tiles draws the icon, so an app's banner is never loaded. A module card keeps its banner.
+                 banner = bundledBanner(appBanners.get(pkg));
+                 if (banner == null) banner = iconTiles.contains(pkg) ? iconBanner(ri.loadIcon(pm)) : loadBanner(pm, ri);
+             }
+@@ -499,6 +506,7 @@
+             h.banner.setVisibility(View.VISIBLE);
+             h.icon.setVisibility(View.GONE);
+             h.label.setVisibility(View.GONE);
++            if (e.banner instanceof Animatable) ((Animatable) e.banner).start();
+         } else {
+             h.banner.setImageDrawable(null);
+             h.banner.setVisibility(View.GONE);
+@@ -557,6 +565,24 @@
+             }
+         } catch (Exception ex) {
+             Toast.makeText(ctx, ctx.getString(R.string.cant_open, e.label), Toast.LENGTH_SHORT).show();
++        }
++    }
++
++    /** Starts or stops the fire tile's animation while Home is in front (MainActivity onResume/onPause). */
++    void setFireRunning(boolean running) {
++        for (Entry e : items) {
++            if (!(e.banner instanceof FireBannerDrawable)) continue;
++            if (running) ((FireBannerDrawable) e.banner).start();
++            else ((FireBannerDrawable) e.banner).stop();
++        }
++    }
++
++    @Override
++    public void onViewRecycled(@NonNull RecyclerView.ViewHolder holder) {
++        super.onViewRecycled(holder);
++        if (holder instanceof Holder) {
++            Drawable showing = ((Holder) holder).banner.getDrawable();
++            if (showing instanceof Animatable) ((Animatable) showing).stop();
+         }
+     }
+ 

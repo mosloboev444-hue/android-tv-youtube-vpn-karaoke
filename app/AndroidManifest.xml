@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gathin.vpngate">
+
+    <!-- NetworkInterface enumeration only; the gate itself never opens a connection. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Android 11+ package visibility: we only need these two packages. -->
+    <queries>
+        <package android:name="com.google.android.youtube.tv" />
+        <package android:name="st.uboo.android.client" />
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
+
+        <activity
+            android:name=".KaraokeActivity"
+            android:exported="true"
+            android:label="@string/karaoke_label"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          The whole app: a bound AccessibilityService. Android starts and rebinds it itself,
+          so the gate survives reboots without a BOOT_COMPLETED receiver and without a
+          foreground service.
+        -->
+        <service
+            android:name=".GateAccessibilityService"
+            android:exported="true"
+            android:label="@string/service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/gate_service" />
+        </service>
+    </application>
+
+</manifest>

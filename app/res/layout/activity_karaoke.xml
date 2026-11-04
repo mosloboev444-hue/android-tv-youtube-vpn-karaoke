@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:keepScreenOn="true">
+
+    <com.gathin.vpngate.FireView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="48dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.06"
+            android:shadowColor="#FFFF5A00"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="26"
+            android:text="@string/karaoke_title"
+            android:textColor="#FFFFFFFF"
+            android:textSize="84sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:letterSpacing="0.04"
+            android:text="@string/karaoke_wait"
+            android:textColor="#FFFFD9A3"
+            android:textSize="24sp" />
+    </LinearLayout>
+</FrameLayout>

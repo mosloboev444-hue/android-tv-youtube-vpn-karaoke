@@ -1,0 +1,11 @@
+# Build output
+build/
+app/build/
+app/YouTube-VPN-Gate.apk
+
+# Signing artefacts
+*.idsig
+
+# OS junk
+.DS_Store
+Thumbs.db

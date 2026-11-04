@@ -1,0 +1,18 @@
+--- a/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
++++ b/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
+@@ -1067,6 +1067,7 @@
+         if (gameDay != null) gameDay.start();
+         sky.update();
+         wallpaperPlayer.start();
++        adapter.setFireRunning(true);
+         handler.postDelayed(minuteTick, MINUTE_MS);
+         if (festive && lamp != null) {
+             lamp.start();
+@@ -1241,6 +1242,7 @@
+         root.removeCallbacks(showIdleClock);
+         endReorder();   // Home or another app while reordering keeps the order so far
+         wallpaperPlayer.stop();
++        adapter.setFireRunning(false);
+         stopAmbientAnimation();
+         hero.animate().cancel();
+         ambient.animate().cancel();

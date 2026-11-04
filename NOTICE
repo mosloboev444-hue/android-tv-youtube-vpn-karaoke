@@ -1,0 +1,20 @@
+# NOTICE
+
+This project contains a modified launcher derived from **CleanYourTV**
+(<https://github.com/Gathin23/cleanyourtv>), Copyright (c) Gathin23 and contributors,
+licensed under the MIT License.
+
+Files derived from CleanYourTV:
+
+- `launcher/FireBannerDrawable.java` (a new class written against its API);
+- `launcher/patches/AppAdapter.patch`;
+- `launcher/patches/MainActivity.patch`;
+- `launcher/patches/config.patch`;
+- `apk/CleanYourTV-Karaoke-3.2.apk` (a build of that fork).
+
+The rest of the project (YouTube VPN Gate application, scripts, documentation, video) is
+Copyright (c) 2026 YouTube VPN Gate contributors and licensed under the MIT License; see
+[`LICENSE`](LICENSE).
+
+YouTube and Юбуст are trademarks of their respective owners. This project is not affiliated
+with Google, YouTube, or the Юбуст VPN service.
