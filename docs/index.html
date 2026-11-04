@@ -47,7 +47,10 @@
     opacity:.35;
   }
   a{color:inherit}
+  img,video{max-width:100%;height:auto}
   .wrap{width:min(1180px,100%);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  .hero,.duo,.steps,.karaoke,.install,.shots,.foot{min-width:0}
+  .hero > *,.duo > *,.steps > *,.karaoke > *,.install > *,.shots > *,.foot > *{min-width:0}
   header{
     position:sticky; top:0; z-index:20;
     border-bottom:1px solid rgba(255,255,255,.05);
@@ -99,7 +102,7 @@
     filter:blur(26px);
   }
   .phone{
-    width:min(360px,100%);border-radius:30px;overflow:hidden;
+    width:min(360px,100%);max-width:100%;border-radius:30px;overflow:hidden;
     border:1px solid rgba(255,140,60,.35);
     box-shadow:0 30px 90px rgba(0,0,0,.65),0 0 0 8px rgba(255,255,255,.02);
     background:#000;
@@ -168,12 +171,15 @@
   .fireline{height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,#ff3d00,#ffc247,#ff3d00,transparent);margin-top:46px;opacity:.7}
   @media (max-width:920px){
     .hero{grid-template-columns:1fr;gap:34px;padding:56px 0 40px}
-    .hero-media{order:-1}
-    .phone{width:min(300px,86vw)}
+    .hero-media{order:0}
+    .phone{width:min(286px,82vw)}
     .duo,.shots,.steps,.karaoke,.install,.limits{grid-template-columns:1fr}
     .stats{gap:22px}
-    .links{display:none}
-    h1{font-size:clamp(42px,11vw,64px)}
+    .links{gap:10px}
+    .links .navlink{display:none}
+    .links .btn{padding:10px 14px;font-size:13px}
+    h1{font-size:clamp(40px,10.5vw,56px)}
+    .wrap{padding:0 20px}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
@@ -183,10 +189,10 @@
   <div class="wrap nav">
     <a class="brand" href="#top"><span class="dot"></span><span>YouTube VPN Gate<br><small>Android TV</small></span></a>
     <nav class="links">
-      <a href="#how">Как работает</a>
-      <a href="#karaoke">Караоке</a>
-      <a href="#install">Установка</a>
-      <a href="https://github.com/mosloboev444-hue/android-tv-youtube-vpn-karaoke/blob/main/README.en.md">English</a>
+      <a class="navlink" href="#how">Как работает</a>
+      <a class="navlink" href="#karaoke">Караоке</a>
+      <a class="navlink" href="#install">Установка</a>
+      <a class="navlink" href="https://github.com/mosloboev444-hue/android-tv-youtube-vpn-karaoke/blob/main/README.en.md">English</a>
       <a class="btn primary" href="https://github.com/mosloboev444-hue/android-tv-youtube-vpn-karaoke/releases/tag/v1.0">Скачать APK</a>
     </nav>
   </div>
