@@ -144,8 +144,10 @@
   .karaoke{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center}
   .karaoke .shot img{max-height:420px;object-fit:cover}
   .checklist{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px}
-  .checklist li{display:flex;gap:11px;color:#ddcabe;line-height:1.5}
-  .checklist li::before{content:"";flex:0 0 8px;width:8px;height:8px;margin-top:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px rgba(255,100,20,.7)}
+  .checklist li{display:block;position:relative;padding-left:20px;color:#ddcabe;line-height:1.55}
+  .checklist li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px rgba(255,100,20,.7)}
+  .checklist li code{white-space:normal}
+  .code pre{margin:0}
   .install{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px;align-items:start}
   .code{
     position:relative;background:#0b0503;border:1px solid var(--line);border-radius:16px;
@@ -189,6 +191,8 @@
     .stat span{font-size:9px;letter-spacing:.03em}
     .actions .btn{width:100%;justify-content:center}
     .hero{padding-top:40px}
+    .code{font-size:11px}
+    .code pre{white-space:pre-wrap;word-break:break-word}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
