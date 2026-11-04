@@ -11,6 +11,8 @@ VPN включается сам, YouTube открывается на поиск�
 работает **без root**, на штатном `AccessibilityService`, и не требует always-on VPN (на Philips
 Android TV 14 он не запускает Юбуст).
 
+**Лендинг:** <https://mosloboev444-hue.github.io/android-tv-youtube-vpn-karaoke/>
+
 - Видео «ДО / ПОСЛЕ»: [`video/karaoke_tiktok.mp4`](video/karaoke_tiktok.mp4)
 - Обложка: [`video/cover.png`](video/cover.png)
 - Готовые APK: [`apk/`](apk/)

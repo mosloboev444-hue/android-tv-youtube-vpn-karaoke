@@ -8,6 +8,8 @@ one click turns the VPN on and opens YouTube karaoke search.
 Built for a Philips 50PUS8057/60 (Android TV 14). **No root.** It uses a standard
 `AccessibilityService`, not always-on VPN (the TV’s always-on does not start Uboo).
 
+**Landing page:** <https://mosloboev444-hue.github.io/android-tv-youtube-vpn-karaoke/>
+
 **Русская версия:** [README.md](README.md)
 
 - Demo video: [`video/karaoke_tiktok.mp4`](video/karaoke_tiktok.mp4)
